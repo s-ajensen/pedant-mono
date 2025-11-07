@@ -1,0 +1,7 @@
+{
+ :source-dir  "dev/pedant/styles"
+ :var         pedant.styles.main/screen
+ :output-file "resources/public/css/pedant.css"
+ :flags       {:pretty-print? true
+               :vendors       ["webkit" "moz" "o"]}
+ }

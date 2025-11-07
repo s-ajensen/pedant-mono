@@ -1,0 +1,3 @@
+{:migrations-ns pedant.db.migrations
+ :full-schema   pedant.schema.full/full-schema
+ :config-var    pedant.config/bucket}
