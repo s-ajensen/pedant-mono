@@ -5,8 +5,7 @@
 (defn home []
   (fn []
     [:div.homepage-container
-     [:h1 "pedant - The Simple Base Converter"]
-     ]))
+     [:h1 "pedant - The Simple Base Converter"]]))
 
 (defmethod page/render :home [_]
   [home])
