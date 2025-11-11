@@ -3,7 +3,6 @@
 
 (def ^:private base
   {
-   :analytics-code "console.log('google analytics would have loaded for this page');"
    :log-level      :info})
 
 (def development
@@ -13,13 +12,14 @@
 
 (def staging
   (assoc base
-    :host "https://pedant-staging.cleancoders.com"
+    ;:host "https://pedant-staging.cleancoders.com"
     :log-level :trace))
 
 (def production
-  (assoc base
-    :host "https://pedant.cleancoders.com"
-    :analytics-code "console.log('Replace me with Real Google Analytics Code.');"))
+  ;(assoc
+    base
+    ;:host "https://pedant.cleancoders.com")
+    )
 
 (def environment (app/find-env "cc.env" "CC_ENV"))
 (def development? (= "development" environment))

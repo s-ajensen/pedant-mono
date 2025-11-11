@@ -2,18 +2,13 @@
   (:require [pedant.config :as config]
             [pedant.layouts :as layouts]
             [c3kit.apron.log :as log]
-            [c3kit.apron.time :as time]
             [c3kit.apron.util :as util]
             [c3kit.wire.assets :refer [wrap-asset-fingerprint]]
-            [c3kit.wire.jwt :as jwt]
-            [c3kit.wire.jwt :refer [wrap-jwt]]
             [compojure.core :refer [defroutes]]
             [compojure.route :as route]
             [org.httpkit.server :refer [run-server]]
-            [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
             [ring.middleware.content-type :refer [wrap-content-type]]
             [ring.middleware.cookies :refer [wrap-cookies]]
-            [ring.middleware.flash :refer [wrap-flash]]
             [ring.middleware.head :refer [wrap-head]]
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [ring.middleware.multipart-params :refer [wrap-multipart-params]]
@@ -53,7 +48,6 @@
 
 (defonce root-handler
   (-> (app-handler)
-      wrap-flash
       wrap-keyword-params
       wrap-multipart-params
       wrap-nested-params

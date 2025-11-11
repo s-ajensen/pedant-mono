@@ -48,10 +48,4 @@
   (it "not-found global - nil - handled by http"
     (let [response (routes/handler {:uri "/blah" :request-method :get})]
       (should-be-nil response)))
-
-  (it "spinner"
-    (with-redefs [routes/sleep-for-10 (stub :sleep)]
-      (wire-helper/should-be-ajax-ok (routes/spinner :blah) nil)
-      (should-have-invoked :sleep)))
-
   )
