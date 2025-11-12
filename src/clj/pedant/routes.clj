@@ -1,6 +1,8 @@
 (ns pedant.routes
-  (:require [c3kit.apron.util :as util]
+  (:require [c3kit.apron.log :as log]
+            [c3kit.apron.util :as util]
             [compojure.core :as compojure :refer [defroutes routes]]
+            [org.httpkit.server :as http]
             [pedant.config :as config]
             [pedant.sse :as sse]))
 
@@ -32,6 +34,15 @@
      ["/" :get] pedant.layouts/web-rich-client
      }))
 
+(def sse-route-handlers
+  (-> (lazy-routes
+        {
+         ;["/sse" :get] pedant.routes/test-handler
+         })
+      ;sse/wrap-sse
+      ))
+
 (defroutes handler
   web-routes-handlers
+  sse-route-handlers
   )
