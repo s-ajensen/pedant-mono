@@ -1,10 +1,7 @@
 (ns pedant.routes
-  (:require [c3kit.apron.log :as log]
-            [c3kit.apron.util :as util]
+  (:require [c3kit.apron.util :as util]
             [compojure.core :as compojure :refer [defroutes routes]]
-            [org.httpkit.server :as http]
-            [pedant.config :as config]
-            [pedant.sse :as sse]))
+            [pedant.config :as config]))
 
 (def resolve-handler
   (if config/development?
@@ -34,12 +31,15 @@
      ["/" :get] pedant.layouts/web-rich-client
      }))
 
+(defn foo-handler [request]
+  {:status 200 :body "FUCK"})
+
 (def sse-route-handlers
   (-> (lazy-routes
         {
-         ;["/sse" :get] pedant.routes/test-handler
+         ["/sse" :get]  pedant.debate/api-debate
+         ["/test" :get] pedant.routes/foo-handler
          })
-      ;sse/wrap-sse
       ))
 
 (defroutes handler
